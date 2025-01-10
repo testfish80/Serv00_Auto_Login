@@ -1,4 +1,4 @@
-const fs = require('fs');
+//const fs = require('fs');
 const puppeteer = require('puppeteer');
 
 function formatToISO(date) {
@@ -11,8 +11,13 @@ async function delayTime(ms) {
 
 (async () => {
   // 读取 accounts.json 中的 JSON 字符串
-  const accountsJson = fs.readFileSync('accounts.json', 'utf-8');
-  const accounts = JSON.parse(accountsJson);
+  //const accountsJson = fs.readFileSync('accounts.json', 'utf-8');
+ // const accounts = JSON.parse(accountsJson);
+  const accounts = [
+    { username: '你的用户名1', password: '你的密码1', panelnum: '5' }
+   // { username: '你的用户名2', password: '你的密码2', panelnum: '5' },
+    // 可以添加更多账号
+  ];
 
   for (const account of accounts) {
     const { username, password, panelnum } = account;
@@ -78,7 +83,4 @@ async function delayTime(ms) {
   console.log('所有账号登录完成！');
 })();
 
-// 自定义延时函数
-function delayTime(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+
